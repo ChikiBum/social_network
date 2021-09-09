@@ -1,44 +1,39 @@
 import React from 'react';
-import { addPostActionCreator, updateNewPostActionCreator } from '../../../redux/profile-reducer';
-import classes from './MyPosts.module.css';
+import s from './MyPosts.module.css';
 import Post from './Post/Post';
 
+const MyPosts = (props) => {
+    let postsElements =
+        props.posts.map( p => <Post message={p.message} likesCount={p.likesCount}/>);
 
-const MyPosts = ( { updateNewPostText, addPost, profilePage} ) => {
+    let newPostElement = React.createRef();
 
-let postsElements = profilePage.posts.map( el => <Post message={el.message} likes={el.likesCount} key={el.id} id={el.id}/>);
+    let onAddPost = () => {
+        props.addPost();
+    }
 
-const newPostElement = React.createRef();
-
-const onAddPost = () => {
-  addPost();
-};
-
-const onPostChange = () => {
-  const text = newPostElement.current.value;
-  updateNewPostText(text);
-};
+    let onPostChange = () => {
+        let text = newPostElement.current.value;
+        props.updateNewPostText(text);
+    }
 
     return (
-        <div className={classes.postsBlock}>
-          <h3>My post</h3>
-          <div>
+        <div className={s.postsBlock}>
+            <h3>My posts</h3>
             <div>
-                <textarea
-                onChange={onPostChange} 
-                ref={newPostElement} 
-                value={ profilePage.newPostText }/>
-           </div>
-           <div>
-                <button onClick={ onAddPost }>Add post</button>
-           </div>
-          </div>
-          <div className={classes.posts}>
-            { postsElements }
+                <div>
+                    <textarea onChange={ onPostChange } ref={newPostElement}
+                              value={props.newPostText} />
+                </div>
+                <div>
+                    <button onClick={ onAddPost }>Add post</button>
+                </div>
+            </div>
+            <div className={s.posts}>
+                { postsElements }
+            </div>
         </div>
-      </div>
     )
-};
-
+}
 
 export default MyPosts;

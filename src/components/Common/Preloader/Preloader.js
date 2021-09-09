@@ -1,9 +1,9 @@
-import React  from "react";
-import preloader from '../../../assets/images/preloader-3.gif';
+import React from 'react';
+import preloader from "../../../assets/images/preloader.svg";
 
-const Preloader = (props) => {
-    return <div style={{'max-width': '80px'}}>
-          <img src={preloader} style={{'max-width': '180px'}}/> 
+let Preloader = (props) => {
+    return <div  style={ { backgroundColor: 'white' } }>
+        <img src={preloader} />
     </div>
 }
 
