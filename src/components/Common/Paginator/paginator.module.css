@@ -1,0 +1,23 @@
+.wrapper{
+    display: flex;
+    justify-content: space-between;
+    width: 25%;
+}
+
+.spanWrapper{
+    margin-left: 3px;
+    margin-right: 3px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between; 
+}
+
+span {
+    width: auto;
+    margin-left: 3px;
+}
+
+.selectedPage {
+   font-weight: bold;
+}
+
